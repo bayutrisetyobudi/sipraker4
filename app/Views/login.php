@@ -55,7 +55,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="" class="btn btn-primary btn-user btn-block">
+                                        <a href="<?=route_to('dashboard')?>" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                         <hr>
