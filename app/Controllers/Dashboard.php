@@ -6,6 +6,6 @@ class Dashboard extends BaseController
 {
 	public function mahasiswa()
 	{
-		return view('mahasiswa/index');
+		return view('dosen/dosbim/d_mhsbim');
 	}
 }
