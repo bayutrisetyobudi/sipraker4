@@ -38,22 +38,22 @@ class Dashboard extends BaseController
 	
 	public function semua_mahasiswa()
 	{
-		$data = ['title'=>'Dashboard'];
+		$data = ['title'=>'Data Mahasiswa'];
 		return view('dosen/prodi/d_mhs',$data);
 	}
 	public function semua_dosen()
 	{
-		$data = ['title'=>'Dashboard'];
+		$data = ['title'=>'Data Dosen'];
 		return view('dosen/prodi/d_dosen',$data);
 	}
 	public function data_pengajuan()
 	{
-		$data = ['title'=>'Dashboard'];
+		$data = ['title'=>'Data Pengajuan'];
 		return view('dosen/prodi/d_pengajuan',$data);
 	}
 	public function data_validasi()
 	{
-		$data = ['title'=>'Dashboard'];
+		$data = ['title'=>'Data Tervalidasi'];
 		return view('dosen/prodi/d_validasi',$data);
 	}
 

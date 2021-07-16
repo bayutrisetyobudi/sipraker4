@@ -10,16 +10,6 @@
     <div class="row">
         <div class="col">
             <div class="card shadow">
-                <div class="card-header">
-                    <div class="clearfix">
-                        <div class="float-left">
-                            Mulai Bimbingan
-                        </div>
-                        <div class="float-right">
-                            <a href="">Kembali</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-body">
                     <form method="POST" action="" enctype="multipart/form-data">
                     <div class="form-group">

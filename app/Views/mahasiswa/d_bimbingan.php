@@ -12,9 +12,6 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Bimbingan </h6>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -27,20 +24,11 @@
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Tanggal Bimbingan</th>
-                            <th>Judul Bimbingan</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <tr>
                             <td>1</td>
                             <td>2011/04/25</td>
-                            <td>Bab 1 (Sistem Open BO)</td>
+                            <td>Bab 1 (Sistem Kenduren)</td>
 
                             <td class="text-center">
                                 <span class="badge badge-warning">Revisi</span>
@@ -54,7 +42,7 @@
                         <tr>
                             <td>2</td>
                             <td>2011/07/25</td>
-                            <td>Bab 1 (Sistem Open BO)</td>
+                            <td>Bab 1 (Sistem Kenduren)</td>
                             <td class="text-center"><span class="badge badge-success">Lanjut</span></td>
                             <td class="text-center">
                                 <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>

@@ -5,21 +5,10 @@
 <?= $this->section('content') ?>
 <div class="container mt-3">
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Daftar Pengajuan Kerja Praktek</h1>
-    <p class="mb-4">Pendaftaran Kerja Praktek / Magang</p>
+    <h1 class="h3 mb-4 text-gray-800">Daftar Pengajuan Kerja Praktek</h1>
     <div class="row">
         <div class="col">
             <div class="card shadow">
-                <div class="card-header">
-                    <div class="clearfix">
-                        <div class="float-left">
-                            Daftar Kerja Praktik
-                        </div>
-                        <div class="float-right">
-                            <a href="">Kembali</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-body">
                     <form method="POST" action="" enctype="multipart/form-data">
                         <div class="form-group">

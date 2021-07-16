@@ -24,43 +24,38 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Data Mahasiswa Bimbingan
+        Mahasiswa Bimbingan
     </div>
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="<?=base_url('/dosen/dosbim/dashboard/mahasiswa')?>">
-            <i class="fas fa-book fa-sm fa-fw mr-2 text-gray-400"></i>
+            <i class="fas fa-users fa-sm fa-fw mr-2 "></i>
             <span>Data Mahasiswa</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
     <!-- Heading -->
 
-
     <!-- Heading -->
     <div class="sidebar-heading">
-        Data Bimbingan Mahasiswa
+        Bimbingan
     </div>
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="<?=base_url('/dosen/dosbim/dashboard/bimbingan')?>">
-            <i class="fas fa-book fa-sm fa-fw mr-2 text-gray-400"></i>
+            <i class="fas fa-clipboard-list fa-sm fa-fw mr-2"></i>
             <span>Data Bimbingan </span></a>
     </li>
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="<?=base_url('/dosen/dosbim/dashboard/tervalidasi')?>">
-            <i class="fas fa-book fa-sm fa-fw mr-2 text-gray-400"></i>
+            <i class="fas fa-clipboard-check fa-sm fa-fw mr-2 "></i>
             <span>Bimbingan Tervalidasi</span></a>
     </li>
 
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
-
-
-
-
+    <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
