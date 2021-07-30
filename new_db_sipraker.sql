@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2021 at 10:24 AM
+-- Generation Time: Jul 30, 2021 at 02:18 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -30,8 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bimbingan` (
   `id_bimbingan` int(11) NOT NULL,
-  `lp_bimbingan` text NOT NULL,
-  `lp_revisi` text NOT NULL,
+  `tgl_bimbingan` date NOT NULL,
+  `judul_bimbingan` varchar(256) NOT NULL,
+  `up_bimbingan` varchar(256) NOT NULL,
+  `up_revisi` varchar(256) NOT NULL,
+  `status_bimbingan` varchar(20) NOT NULL,
   `id_praker` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -44,9 +47,18 @@ CREATE TABLE `bimbingan` (
 CREATE TABLE `dosen` (
   `nidn` varchar(40) NOT NULL,
   `nama_dosen` varchar(200) NOT NULL,
+  `prodi` varchar(200) NOT NULL,
   `alamat` varchar(249) NOT NULL,
   `jabatan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dosen`
+--
+
+INSERT INTO `dosen` (`nidn`, `nama_dosen`, `prodi`, `alamat`, `jabatan`) VALUES
+('111234', 'Firmansyah Putra S.kom,M.kom.', 'Teknik Informatika', 'Tuban', 1),
+('222345', 'Udin Malik S.kom,M.kom.', 'Teknik Informatika', 'Kediri', 2);
 
 -- --------------------------------------------------------
 
@@ -59,6 +71,14 @@ CREATE TABLE `jabatan` (
   `jabatan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `jabatan`
+--
+
+INSERT INTO `jabatan` (`id_jabat`, `jabatan`) VALUES
+(1, 'Kaprodi'),
+(2, 'Dosen ');
+
 -- --------------------------------------------------------
 
 --
@@ -69,8 +89,15 @@ CREATE TABLE `mahasiswa` (
   `nim` varchar(20) NOT NULL,
   `nama_mahasiswa` varchar(249) NOT NULL,
   `prodi` varchar(200) NOT NULL,
-  `angkatan` varchar(50) NOT NULL
+  `alamat_mahasiswa` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mahasiswa`
+--
+
+INSERT INTO `mahasiswa` (`nim`, `nama_mahasiswa`, `prodi`, `alamat_mahasiswa`) VALUES
+('2018420047', 'Bayu Tri Setyo Budi', 'Teknik Informatika', 'Lamongan');
 
 -- --------------------------------------------------------
 
@@ -80,12 +107,14 @@ CREATE TABLE `mahasiswa` (
 
 CREATE TABLE `praker` (
   `id_praker` int(11) NOT NULL,
+  `tgl_pengajuan` date NOT NULL,
   `nim` varchar(200) NOT NULL,
   `judul_praker` varchar(200) NOT NULL,
-  `tempat_praker` varchar(200) NOT NULL,
-  `lama_praker` int(11) NOT NULL,
+  `nama_instansi` varchar(256) NOT NULL,
+  `alamat_instansi` text NOT NULL,
   `acc` varchar(20) NOT NULL,
-  `dosbim` varchar(40) NOT NULL
+  `dosbim` varchar(40) NOT NULL,
+  `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -140,7 +169,7 @@ ALTER TABLE `bimbingan`
 -- AUTO_INCREMENT for table `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jabat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jabat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `praker`
