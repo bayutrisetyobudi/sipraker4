@@ -25,21 +25,36 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                        $i = 1;
+                        foreach($data_bimbingan as $row):
+                        $badge_class="";
+                        switch($row['status_bimbingan']){
+                            case "Menunggu":
+                                $badge_class = "warning";
+                                break;
+                            case "Revisi":
+                                $badge_class = "danger";
+                                break;
+                            case "Lanjut":
+                                $badge_class = "success";
+                                break;
+                        }
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>2011/04/25</td>
-                            <td>Bab 1 (Sistem Kenduren)</td>
-
-                            <td class="text-center">
-                                <span class="badge badge-warning">Revisi</span>
+                            <td class="align-middle text-center"><?=$i++?></td>
+                            <td class="align-middle"><?=$row['tgl_bimbingan']?></td>
+                            <td class="align-middle"><?=$row['judul_bimbingan']?></td>
+                            <td class="align-middle text-center">
+                                <span class="badge badge-<?=$badge_class?>"><?=$row['status_bimbingan']?></span>
                             </td>
-                            <td class="text-center">
+                            <td class="align-middle text-center">
                                 <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>
                                 <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
-
                             </td>
                         </tr>
-                        <tr>
+                        <?php endforeach;?>
+                        <!-- <tr>
                             <td>2</td>
                             <td>2011/07/25</td>
                             <td>Bab 1 (Sistem Kenduren)</td>
@@ -49,7 +64,7 @@
                                 <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
 
                             </td>
-                        </tr>
+                        </tr> -->
 
                     </tbody>
                 </table>

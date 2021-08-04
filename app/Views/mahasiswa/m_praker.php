@@ -10,44 +10,31 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-body">
-                    <form method="POST" action="" enctype="multipart/form-data">
+                    <form method="POST" action="/mahasiswa/dashboard/actionAddKP">
                         <div class="form-group">
-                            <label for="inputState">Date</label>
-                            <input type="text" readonly class="form-control" required="required" name="date" value="<?= $today; ?>">
-
-                        </div>
-                        <div class="form-group">
-                            <label for="inputState">NIM</label>
-                            <input type="text" readonly class="form-control" required="required" name="date" value="2018420047">
+                            <label for="nim">NIM</label>
+                            <input type="text" id="nim" readonly class="form-control" required="required" name="nim" value="<?=$_SESSION['data_mahasiswa']['nim']?>">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="judul">Nama Instansi / Perusahaan </label>
-                            <input type="text" class="form-control" id="judul" placeholder="Nama Instansi / Perusahaan " autocomplete="off" required="required" name="judul">
+                            <label for="nama">Nama Instansi / Perusahaan </label>
+                            <input type="text" class="form-control" id="nama" autocomplete="off" required="required" name="nama">
                         </div>
 
 
                         <div class="form-group">
-                            <label for="isi">Alamat Instansi / Perusahaan </label>
-                            <textarea class="form-control"></textarea>
+                            <label for="alamat">Alamat Instansi / Perusahaan </label>
+                            <textarea class="form-control" id="alamat" name="alamat"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="judul">Judul Penelitian / Kerja Praktik </label>
-                            <input type="text" class="form-control" id="judul" placeholder="Judul Penelitian / Kerja Praktik" autocomplete="off" required="required" name="judul">
+                            <input type="text" class="form-control" id="judul" autocomplete="off" required="required" name="judul">
                         </div>
 
                         <div class="form-group">
-                            <!--    <label for="penulis">Penulis</label> -->
-                            <input type="text" class="form-control" id="id_mhs" value="" name="id_mhs" readonly hidden>
-                        </div>
-
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-md btn-primary" name="tambah">Daftar</button>
-                            <button type="reset" class="btn btn-md btn-danger" onclick="return confirm('apakah anda yakin?')">Batal</button>
-
+                            <button type="submit" class="btn btn-md btn-primary">Daftar</button>
                         </div>
 
                     </form>

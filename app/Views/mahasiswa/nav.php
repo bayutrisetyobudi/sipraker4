@@ -2,9 +2,9 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('/mahasiswa/dashboard')?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('/mahasiswa/dashboard/index') ?>">
         <div class="sidebar-brand-icon rotate-n-1">
-            <img src="<?=base_url('assets/img/logo.png')?>" style="height: 50px; width: 50px;">
+            <img src="<?= base_url('assets/img/logo.png') ?>" style="height: 50px; width: 50px;">
         </div>
         <div class="sidebar-brand-text mx-3">SIPRAKER</div>
     </a>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('/mahasiswa/dashboard')?>">
+        <a class="nav-link" href="<?= base_url('/mahasiswa/dashboard/index') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -30,8 +30,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?=base_url('/mahasiswa/dashboard/daftar')?>">Pengajuan KP</a>
-                <a class="collapse-item" href="<?=base_url('/mahasiswa/dashboard/validasi')?>">Data Pengajuan KP</a>
+                <a class="collapse-item" href="<?= base_url('/mahasiswa/dashboard/daftar/') ?>">Pengajuan KP</a>
+                <a class="collapse-item" href="<?= base_url('/mahasiswa/dashboard/validasi/') ?>">Data Pengajuan KP</a>
             </div>
         </div>
     </li>
@@ -44,8 +44,8 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?=base_url('/mahasiswa/dashboard/daftar_bimbingan')?>">Mulai Bimbingan</a>
-                <a class="collapse-item" href="<?=base_url('/mahasiswa/dashboard/bimbingan')?>">Data Bimbingan Anda</a>
+                <a class="collapse-item" href="<?= base_url('/mahasiswa/dashboard/daftar_bimbingan/') ?>">Mulai Bimbingan</a>
+                <a class="collapse-item" href="<?= base_url('/mahasiswa/dashboard/bimbingan/') ?>">Data Bimbingan Anda</a>
             </div>
         </div>
     </li>
@@ -55,9 +55,12 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= route_to('/') ?>">
-            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
-            <span>Log Out</span></a>
+        <form action="/mahasiswa/dashboard/actionLogout" method="post">
+            <button type="submit" class="nav-link" style="background-color: transparent;border:0">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                <span>Log Out</span>
+            </button>
+        </form>
     </li>
 
     <!-- Divider -->

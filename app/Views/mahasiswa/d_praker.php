@@ -1,8 +1,8 @@
-<?=$this->extend('layout/dashboard')?>
-<?=$this->section('sidebar')?>
-<?=$this->include('mahasiswa/nav')?>
-<?=$this->endSection()?>
-<?=$this->section('content')?>
+<?= $this->extend('layout/dashboard') ?>
+<?= $this->section('sidebar') ?>
+<?= $this->include('mahasiswa/nav') ?>
+<?= $this->endSection() ?>
+<?= $this->section('content') ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Content Row -->
@@ -24,23 +24,38 @@
                                 <th>Judul Penelitian / Kerja Praktek</th>
                                 <th>Dosen Pembimbing</th>
                                 <th class="text-center">Status</th>
-
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>2011/04/25</td>
-                                <td>PT. CAHAYA ILAHI</td>
-                                <td>Sistem Kenduren</td>
-                                <th class="text-center"><span class="badge badge-danger">Belum dapat</span></th>
+                            <?php
+                            $i = 1;
+                            foreach ($data_kp as $row) :
+                                $btn_class = "";
+                                switch ($row['acc']) {
+                                    case "Menunggu":
+                                        $btn_class = "warning";
+                                        break;
+                                    case "Ditolak":
+                                        $btn_class = "danger";
+                                        break;
+                                    case "Tervalidasi":
+                                        $btn_class = "success";
+                                        break;
+                                }
+                            ?>
+                                <tr>
+                                    <td class="align-middle"><?= $i++ ?></td>
+                                    <td class="align-middle"><?= $row['tgl_pengajuan'] ?></td>
+                                    <td class="align-middle"><?= $row['nama_instansi'] ?></td>
+                                    <td class="align-middle"><?= $row['judul_praker'] ?></td>
+                                    <td class="text-center align-middle"><?= $row['dosbim'] ? $row['dosbim'] : '<span class="badge badge-danger">Belum dapat</span>' ?></th>
 
-                                <td class="text-center">
-                                    <a href="" class="btn btn-danger btn-md" title="Cek Keterangan"><i class="fa fa-eye"></i> Ditolak</a>
-                                </td>
-
-                            </tr>
-                            <tr>
+                                    <td class="text-center align-middle">
+                                        <a class="btn btn-<?= $btn_class ?> btn-md"><?= $row['acc'] ?></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <!-- <tr>
                                 <td>2</td>
                                 <td>2011/05/12</td>
                                 <td>PT. CAHAYA ILAHI</td>
@@ -51,7 +66,7 @@
                                     <a class="btn btn-success btn-md"> Tervalidasi</a>
                                 </td>
 
-                            </tr>
+                            </tr> -->
 
                         </tbody>
                     </table>
@@ -60,4 +75,4 @@
         </div>
     </div>
 </div>
-<?=$this->endSection()?>
+<?= $this->endSection() ?>
