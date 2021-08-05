@@ -38,6 +38,7 @@ class DashboardModel extends Model {
     }
 
     public function getKerjaPraktek(){
+        $this->praker->join('dosen','praker.dosbim = dosen.nidn','left');
         return $this->praker->getWhere(['nim'=>$_SESSION['data_mahasiswa']['nim']])->getResultArray();
     }
 

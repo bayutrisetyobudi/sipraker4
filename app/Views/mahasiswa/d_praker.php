@@ -44,30 +44,22 @@
                                 }
                             ?>
                                 <tr>
-                                    <td class="align-middle"><?= $i++ ?></td>
+                                    <td class="text-center align-middle"><?= $i++ ?></td>
                                     <td class="align-middle"><?= $row['tgl_pengajuan'] ?></td>
                                     <td class="align-middle"><?= $row['nama_instansi'] ?></td>
                                     <td class="align-middle"><?= $row['judul_praker'] ?></td>
-                                    <td class="text-center align-middle"><?= $row['dosbim'] ? $row['dosbim'] : '<span class="badge badge-danger">Belum dapat</span>' ?></th>
+                                    <td class="text-center align-middle"><?= $row['dosbim'] ? $row['nama_dosen'] : '<span class="badge badge-danger">Belum dapat</span>' ?></th>
 
                                     <td class="text-center align-middle">
-                                        <a class="btn btn-<?= $btn_class ?> btn-md"><?= $row['acc'] ?></a>
+                                        <a class="btn btn-<?= $btn_class ?> btn-md">
+                                            <?php if ($row['acc'] == 'Ditolak') : ?>
+                                                <i class="fas fa-eye mr-2"></i>
+                                            <?php endif; ?>
+                                            <?= $row['acc'] ?>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-                            <!-- <tr>
-                                <td>2</td>
-                                <td>2011/05/12</td>
-                                <td>PT. CAHAYA ILAHI</td>
-                                <td>Sistem Informasi Kenduren</td>
-                                <td class="text-center">Edwan Budi, S.kom,.M.kom.</td>
-
-                                <td class="text-center">
-                                    <a class="btn btn-success btn-md"> Tervalidasi</a>
-                                </td>
-
-                            </tr> -->
-
                         </tbody>
                     </table>
                 </div>

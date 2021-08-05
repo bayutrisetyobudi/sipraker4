@@ -31,26 +31,26 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->addRedirect('/', 'mahasiswa/login');
+$routes->addRedirect('/', 'mahasiswa/login/');
 
 
 $routes->group('mahasiswa',function($routes){
-	$routes->add('login', 'Mahasiswa/Login');
-	$routes->addRedirect('/', 'mahasiswa/dashboard');
-	$routes->add('dashboard', 'Mahasiswa/Dashboard');
+	$routes->add('login', 'Mahasiswa/Login::index');
+	$routes->addRedirect('/', 'mahasiswa/dashboard/');
+	$routes->add('dashboard', 'Mahasiswa/Dashboard::index');
 });
 
 $routes->group('dosen',function($routes){
-	$routes->add('login','Dosen/Login');
+	$routes->add('login','Dosen/Login::index');
 	$routes->group('dosbim',function($routes){
-		$routes->addRedirect('/', '/dosen/dosbim/dashboard');
+		$routes->addRedirect('/', '/dosen/dosbim/dashboard/');
 		$routes->add('dashboard', 'Dosen/Dashboard::dosbim');
 		$routes->add('dashboard/mahasiswa', 'Dosen/Dashboard::mahasiswa');
 		$routes->add('dashboard/bimbingan', 'Dosen/Dashboard::bimbingan');
 		$routes->add('dashboard/tervalidasi', 'Dosen/Dashboard::tervalidasi');
 	});
 	$routes->group('kaprodi',function($routes){
-		$routes->addRedirect('/', '/dosen/kaprodi/dashboard');
+		$routes->addRedirect('/', '/dosen/kaprodi/dashboard/');
 		$routes->add('dashboard', 'Dosen/Dashboard::kaprodi');
 		$routes->add('dashboard/mahasiswa', 'Dosen/Dashboard::semua_mahasiswa');
 		$routes->add('dashboard/dosen', 'Dosen/Dashboard::semua_dosen');
