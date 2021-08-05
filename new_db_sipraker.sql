@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2021 at 02:18 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Aug 05, 2021 at 03:25 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_sipraker`
+-- Database: `sipraker`
 --
 
 -- --------------------------------------------------------
@@ -37,6 +36,15 @@ CREATE TABLE `bimbingan` (
   `status_bimbingan` varchar(20) NOT NULL,
   `id_praker` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bimbingan`
+--
+
+INSERT INTO `bimbingan` (`id_bimbingan`, `tgl_bimbingan`, `judul_bimbingan`, `up_bimbingan`, `up_revisi`, `status_bimbingan`, `id_praker`) VALUES
+(5, '2021-08-04', 'coba bimbingan', '', '', 'Menunggu', 3),
+(6, '2021-08-04', 'Bimbingan Revisi', '', '', 'Revisi', 3),
+(7, '2021-08-04', 'Bimbingan lanjut', '', '', 'Lanjut', 3);
 
 -- --------------------------------------------------------
 
@@ -113,9 +121,18 @@ CREATE TABLE `praker` (
   `nama_instansi` varchar(256) NOT NULL,
   `alamat_instansi` text NOT NULL,
   `acc` varchar(20) NOT NULL,
-  `dosbim` varchar(40) NOT NULL,
+  `dosbim` varchar(40) DEFAULT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `praker`
+--
+
+INSERT INTO `praker` (`id_praker`, `tgl_pengajuan`, `nim`, `judul_praker`, `nama_instansi`, `alamat_instansi`, `acc`, `dosbim`, `keterangan`) VALUES
+(1, '2021-08-04', '2018420047', 'testing', 'coab ditolak', 'tes', 'Ditolak', NULL, 'instansi tidak jelas'),
+(2, '2021-08-04', '2018420047', 'testing', 'coab', 'tes', 'Menunggu', NULL, ''),
+(3, '2021-08-04', '2018420047', 'testing acc', 'coab', 'tes', 'Tervalidasi', '222345', '');
 
 --
 -- Indexes for dumped tables
@@ -163,7 +180,7 @@ ALTER TABLE `praker`
 -- AUTO_INCREMENT for table `bimbingan`
 --
 ALTER TABLE `bimbingan`
-  MODIFY `id_bimbingan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bimbingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
@@ -175,7 +192,7 @@ ALTER TABLE `jabatan`
 -- AUTO_INCREMENT for table `praker`
 --
 ALTER TABLE `praker`
-  MODIFY `id_praker` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_praker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

@@ -28,36 +28,35 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $i=1;
+                        foreach($data_bimbingan as $row):
+                            $class_btn = "";
+                        switch($row['status_bimbingan']){
+                            case "Lanjut":
+                                $class_btn = "success";
+                                break;
+                            case "Revisi":
+                                $class_btn = "warning";
+                                break;
+                        }
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>2011/04/25</td>
-                            <td>2018420133</td>
-                            <td>Dendy Zulfikar</td>
-                            <td>Sistem Abal - Abal</td>
-                            <td>Laporan Bab 1</td>
+                            <td class="text-center align-middle"><?=$i++?></td>
+                            <td class="align-middle"><?=$row['tgl_bimbingan']?></td>
+                            <td class="align-middle"><?=$row['nim']?></td>
+                            <td class="align-middle"><?=$row['nama_mahasiswa']?></td>
+                            <td class="align-middle"><?=$row['judul_praker']?></td>
+                            <td class="align-middle"><?=$row['judul_bimbingan']?></td>
                             <td class="text-center">
                                 <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>
                                 <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
                             </td>
                             <td class="text-center">
-                                <a href="" class="btn btn-warning btn-sm" title="RevisI"><i class="fa fa-exit" aria-hidden="true"></i> Revisi</a>
+                                <a href="" class="btn btn-<?=$class_btn?> btn-sm"><i class="fa fa-exit" aria-hidden="true"></i> <?=$row['status_bimbingan']?></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2011/05/12</td>
-                            <td>2018420047</td>
-                            <td>Bayu Tri Setyo Budi</td>
-                            <td>Sistem Informasi Kenduren</td>
-                            <td>Laporan Bab 1</td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>
-                                <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
-                            </td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-success btn-sm" title="Lanjut Laporan Selanjutnya"><i class="fa fa-chexh" aria-hidden="true"></i> Lanjut</a>
-                            </td>
-                        </tr>
+                        <?php endforeach;?>
                     </tbody>
                 </table>
             </div>

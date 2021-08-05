@@ -10,33 +10,69 @@ class Dashboard extends BaseController
 	protected $dashboard;
 	public function __construct()
 	{
-		$this->dashboard=new DashboardDosenModel();
+		$this->dashboard = new DashboardDosenModel();
 	}
 
 	// =================== DOSBIM ==========================
 
 	public function dosbim()
 	{
-		$data = ['title' => 'Dashboard'];
-		return view('dosen/dosbim/index', $data);
+		if (isset($_SESSION['data_dosen']) && $_SESSION['data_dosen']['jabatan'] == 2) {
+			$mhs = $this->dashboard->getJumlahMahasiswaDibimbing($_SESSION['data_dosen']['nidn']);
+			$bimbingan = $this->dashboard->getJumlahBimbingan();
+			$data = [
+				'title' => 'Dashboard',
+				'mhs'=>$mhs,
+				'bimbingan'=>$bimbingan
+			];
+			return view('dosen/dosbim/index', $data);
+		}
+		return redirect()->to('/dosen/login');
 	}
 
 	public function mahasiswa()
 	{
-		$data = ['title' => 'Data Mahasiswa'];
-		return view('dosen/dosbim/d_mhsbim', $data);
+		if (isset($_SESSION['data_dosen']) && $_SESSION['data_dosen']['jabatan'] == 2) {
+			$mhs = $this->dashboard->getMahasiswaDibimbing($_SESSION['data_dosen']['nidn']);
+			$data = [
+				'title' => 'Data Mahasiswa',
+				'data_mhs'=>$mhs
+			];
+			return view('dosen/dosbim/d_mhsbim', $data);
+		}
+		return redirect()->to('/dosen/login');
 	}
 
 	public function bimbingan()
 	{
-		$data = ['title' => 'Data Bimbingan'];
-		return view('dosen/dosbim/d_bim', $data);
+		if (isset($_SESSION['data_dosen']) && $_SESSION['data_dosen']['jabatan'] == 2) {
+			$data_bimbingan = $this->dashboard->getBimbingan($_SESSION['data_dosen']['nidn']);
+			$data = [
+				'title' => 'Data Bimbingan',
+				'data_bimbingan'=>$data_bimbingan
+			];
+			return view('dosen/dosbim/d_bim', $data);
+		}
+		return redirect()->to('/dosen/login');
 	}
 
 	public function tervalidasi()
 	{
-		$data = ['title' => 'Bimbingan Tervalidasi'];
-		return view('dosen/dosbim/d_valbim', $data);
+		if (isset($_SESSION['data_dosen']) && $_SESSION['data_dosen']['jabatan'] == 2) {
+			$data_bimbingan = $this->dashboard->getBimbinganTervalidasi($_SESSION['data_dosen']['nidn']);
+			$data = [
+				'title' => 'Bimbingan Tervalidasi',
+				'data_bimbingan' =>$data_bimbingan
+			];
+			return view('dosen/dosbim/d_valbim', $data);
+		}
+		return redirect()->to('/dosen/login');
+	}
+
+	public function actionSetBimbingan(){
+		$id = $this->request->getVar('id_bimbingan');
+		$this->dashboard->setBimbingan($id);
+		return redirect()->to('/dosen/dosbim/dashboard/bimbingan');
 	}
 
 	// =================== KAPRODI ==========================
@@ -51,9 +87,9 @@ class Dashboard extends BaseController
 			$data = [
 				'title' => 'Dashboard',
 				'dosen' => $dosen,
-				'mhs'=>$mhs,
-				'pengajuan'=>$pengajuan,
-				'tervalidasi'=>$tervalidasi
+				'mhs' => $mhs,
+				'pengajuan' => $pengajuan,
+				'tervalidasi' => $tervalidasi
 			];
 			return view('dosen/prodi/index', $data);
 		}
@@ -78,7 +114,7 @@ class Dashboard extends BaseController
 			$dosen = $this->dashboard->getDosen();
 			$data = [
 				'title' => 'Data Dosen',
-				'data_dosen' =>$dosen
+				'data_dosen' => $dosen
 			];
 			return view('dosen/prodi/d_dosen', $data);
 		}
@@ -115,17 +151,18 @@ class Dashboard extends BaseController
 		return redirect()->to('/dosen/login');
 	}
 
-	public function actionUpdateAcc(){
+	public function actionUpdateAcc()
+	{
 		$tolak = $this->request->getVar('tolak');
 		$validasi = $this->request->getVar('validasi');
 		$id = $this->request->getVar('id_praker');
-		if(isset($tolak)){
+		if (isset($tolak)) {
 			$this->dashboard->setPengajuanKP(
 				$id,
 				'Ditolak'
 			);
 		}
-		if(isset($validasi)){
+		if (isset($validasi)) {
 			$this->dashboard->setPengajuanKP(
 				$id,
 				'Tervalidasi'

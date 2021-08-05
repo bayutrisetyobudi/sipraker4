@@ -16,7 +16,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th class="text-center">No</th>
                             <th>Tanggal Bimbingan</th>
                             <th>NIM</th>
                             <th>Nama</th>
@@ -27,36 +27,29 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                        $i=1;
+                        foreach($data_bimbingan as $row):?>
                         <tr>
-                            <td>1</td>
-                            <td>2011/04/25</td>
-                            <td>2018420133</td>
-                            <td>Dendy Zulfikar</td>
-                            <td>Sistem Abal - Abal</td>
-                            <td>Laporan Bab 1</td>
-                            <td class="text-center">
+                            <td class="align-middle text-center"><?=$i++?></td>
+                            <td class="align-middle"><?=$row['tgl_bimbingan']?></td>
+                            <td class="align-middle"><?=$row['nim']?></td>
+                            <td class="align-middle"><?=$row['nama_mahasiswa']?></td>
+                            <td class="align-middle"><?=$row['judul_praker']?></td>
+                            <td class="align-middle"><?=$row['judul_bimbingan']?></td>
+                            <td class="align-middle text-center">
                                 <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>
                                 <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
+                                <form action="/dosen/dashboard/actionSetBimbingan" method="post">
+                                    <input type="hidden" value="<?=$row['id_bimbingan']?>" name="id_bimbingan">
+                                    <button class="btn btn-success"><i class="fas fa-check mr-2"></i> Lanjut</button>
+                                </form>
                             </td>
-                            <td class="text-center">
+                            <td class="align-middle text-center">
                                 <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-upload" aria-hidden="true"></i> Upload</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2011/05/12</td>
-                            <td>2018420047</td>
-                            <td>Bayu Tri Setyo Budi</td>
-                            <td>Sistem Informasi Kenduren</td>
-                            <td>Laporan Bab 1</td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>
-                                <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
-                            </td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-upload" aria-hidden="true"></i> Upload</a>
-                            </td>
-                        </tr>
+                        <?php endforeach;?>
                     </tbody>
                 </table>
             </div>

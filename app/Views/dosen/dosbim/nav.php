@@ -59,9 +59,12 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('/dosen/login')?>">
+        <form action="/dosen/dashboard/actionLogout" method="POST">
+            <button class="nav-link" type="submit" style="background-color: transparent;border:0">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-            <span>Log Out</span></a>
+            <span>Log Out</span>
+        </button>
+    </form>
     </li>
 
     <!-- Divider -->
