@@ -16,7 +16,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th class="text-center">No</th>
                             <th>NIDN</th>
                             <th>Nama</th>
                             <th>Prodi</th>
@@ -24,20 +24,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                        $i=1;
+                        foreach($data_dosen as $row):?>
                         <tr>
-                            <td>1</td>
-                            <td>65346556868</td>
-                            <td>Jeff Markona S.T,.M.T</td>
-                            <td>Teknik Informatika</td>
-                            <td>Amerika</td>
+                            <td class="text-center"><?=$i++?></td>
+                            <td><?=$row['nidn']?></td>
+                            <td><?=$row['nama_dosen']?></td>
+                            <td><?=$row['prodi']?></td>
+                            <td><?=$row['alamat']?></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>65346556869</td>
-                            <td>Kusomo Ageng S.T,.M.T</td>
-                            <td>Teknik Informatika</td>
-                            <td>Belanda</td>
-                        </tr>
+                        <?php endforeach;?>
                     </tbody>
                 </table>
             </div>

@@ -2,9 +2,9 @@
 <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('/dosen/kaprodi/dashboard')?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('/dosen/kaprodi/dashboard') ?>">
         <div class="sidebar-brand-icon rotate-n-1">
-            <img src="<?=base_url('assets/img/logo.png')?>" style="height: 50px; width: 50px;">
+            <img src="<?= base_url('assets/img/logo.png') ?>" style="height: 50px; width: 50px;">
         </div>
         <div class="sidebar-brand-text mx-3">SIPRAKER</div>
     </a>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
-        <a class="nav-link" href="<?=base_url('/dosen/kaprodi/dashboard')?>">
+        <a class="nav-link" href="<?= base_url('/dosen/kaprodi/dashboard') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -28,13 +28,13 @@
     </div>
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('/dosen/kaprodi/dashboard/mahasiswa')?>">
+        <a class="nav-link" href="<?= base_url('/dosen/kaprodi/dashboard/mahasiswa') ?>">
             <i class="fas fa-users fa-sm fa-fw mr-2"></i>
             <span>Data Mahasiswa</span></a>
     </li>
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('/dosen/kaprodi/dashboard/dosen')?>">
+        <a class="nav-link" href="<?= base_url('/dosen/kaprodi/dashboard/dosen') ?>">
             <i class="fas fa-user-graduate fa-sm fa-fw mr-2"></i>
             <span>Data Dosen</span></a>
     </li>
@@ -48,13 +48,13 @@
     </div>
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('/dosen/kaprodi/dashboard/pengajuan')?>">
+        <a class="nav-link" href="<?= base_url('/dosen/kaprodi/dashboard/pengajuan') ?>">
             <i class="fas fa-clipboard-list fa-sm fa-fw mr-2"></i>
             <span>Data Pengajuan</span></a>
     </li>
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('/dosen/kaprodi/dashboard/tervalidasi')?>">
+        <a class="nav-link" href="<?= base_url('/dosen/kaprodi/dashboard/tervalidasi') ?>">
             <i class="fas fa-clipboard-check fa-sm fa-fw mr-2"></i>
             <span>Data Tervalidasi</span></a>
     </li>
@@ -65,9 +65,12 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= route_to('dosen/login') ?>">
-            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
-            <span>Log Out</span></a>
+        <form action="/dosen/dashboard/actionLogout" method="post">
+            <button class="nav-link" type="submit" style="background-color: transparent;border:0">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                <span>Log Out</span>
+            </button>
+        </form>
     </li>
 
     <!-- Divider -->

@@ -79,7 +79,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION['data_mahasiswa']['nama_mahasiswa']?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=isset($_SESSION['data_mahasiswa'])? $_SESSION['data_mahasiswa']['nama_mahasiswa']:$_SESSION['data_dosen']['nama_dosen']?></span>
                                 <img class="img-profile rounded-circle" src="<?= base_url('assets/img/undraw_profile.svg') ?>">
                             </a>
                         </li>

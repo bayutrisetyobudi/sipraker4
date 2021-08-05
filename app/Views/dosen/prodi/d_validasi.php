@@ -16,7 +16,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th class="text-center">No</th>
                             <th>Tanggal Pengajuan</th>
                             <th>NIM</th>
                             <th>Nama</th>
@@ -27,31 +27,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                        $i=1;
+                        foreach($data_tervalidasi as $row):
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>2011/04/25</td>
-                            <td>2018420133</td>
-                            <td>Dendy Zulfikar</td>
-                            <td>PT. CAHAYA ILAHI</td>
-                            <td>Sistem Abal - Abal</td>
-                            <td class="text-center"><span class="badge badge-success">Tervalidasi</span></td>
+                            <td class="text-center"><?=$i++?></td>
+                            <td><?=$row['tgl_pengajuan']?></td>
+                                <td><?=$row['nim']?></td>
+                                <td><?=$row['nama_mahasiswa']?></td>
+                                <td><?=$row['nama_instansi']?></td>
+                                <td><?=$row['judul_praker']?></td>
+                            <td class="text-center"><span class="badge badge-success"><?=$row['acc']?></span></td>
                             <td class="text-center">
-                                <a href="" class="btn btn-warning btn-sm" title="Cek Selengkapnya"><i class="fa fa-eye"></i> Lihat</a>
+                                <a href="" class="btn btn-warning btn-sm" title="Cek Selengkapnya"><i class="fa fa-eye mr-2"></i> Lihat</a>
 
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2011/05/12</td>
-                            <td>2018420047</td>
-                            <td>Bayu Tri Setyo Budi</td>
-                            <td>PT. CAHAYA ILAHI</td>
-                            <td>Sistem Informasi Kenduren</td>
-                            <th class="text-center"><span class="badge badge-success">Tervalidasi</span></th>
-                            <td class="text-center">
-                                <a href="" class="btn btn-warning btn-sm" title="Cek Selengkapnya"><i class="fa fa-eye"></i> Lihat</a>
-                            </td>
-                        </tr>
+                        <?php endforeach;?>
                     </tbody>
                 </table>
             </div>

@@ -3,7 +3,7 @@
 namespace App\Controllers\Mahasiswa;
 
 use App\Controllers\BaseController;
-use \App\Models\LoginModel;
+use App\Models\LoginMHSModel;
 
 class Login extends BaseController
 {
@@ -17,7 +17,7 @@ class Login extends BaseController
 
 	public function loginAction()
 	{
-		$mahasiswa = new LoginModel();
+		$mahasiswa = new LoginMHSModel();
 		$nim = $this->request->getVar('nim');
 		$pass = $this->request->getVar('pass');
 		$data = $mahasiswa->login($nim);

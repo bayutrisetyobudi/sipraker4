@@ -51,11 +51,13 @@ $routes->group('dosen',function($routes){
 	});
 	$routes->group('kaprodi',function($routes){
 		$routes->addRedirect('/', '/dosen/kaprodi/dashboard/');
-		$routes->add('dashboard', 'Dosen/Dashboard::kaprodi');
-		$routes->add('dashboard/mahasiswa', 'Dosen/Dashboard::semua_mahasiswa');
-		$routes->add('dashboard/dosen', 'Dosen/Dashboard::semua_dosen');
-		$routes->add('dashboard/pengajuan', 'Dosen/Dashboard::data_pengajuan');
-		$routes->add('dashboard/tervalidasi', 'Dosen/Dashboard::data_validasi');
+		$routes->group('dashboard',function($routes){
+			$routes->add('/', 'Dosen/Dashboard::kaprodi');
+			$routes->add('mahasiswa', 'Dosen/Dashboard::semua_mahasiswa');
+			$routes->add('dosen', 'Dosen/Dashboard::semua_dosen');
+			$routes->add('pengajuan', 'Dosen/Dashboard::data_pengajuan');
+			$routes->add('tervalidasi', 'Dosen/Dashboard::data_validasi');
+		});
 	});
 });
 

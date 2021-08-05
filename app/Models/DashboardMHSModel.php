@@ -5,7 +5,7 @@ namespace App\Models;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\Model;
 
-class DashboardModel extends Model {
+class DashboardMHSModel extends Model {
     protected $table = 'praker';
     protected $praker;
     protected $bimbingan;

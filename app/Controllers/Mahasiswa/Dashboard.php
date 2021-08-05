@@ -3,14 +3,14 @@
 namespace App\Controllers\Mahasiswa;
 
 use App\Controllers\BaseController;
-use App\Models\DashboardModel;
+use App\Models\DashboardMHSModel;
 
 class Dashboard extends BaseController
 {
 	protected $dashboard;
 	public function __construct()
 	{
-		$this->dashboard = new DashboardModel();
+		$this->dashboard = new DashboardMHSModel();
 	}
 	public function index()
 	{

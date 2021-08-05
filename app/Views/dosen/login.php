@@ -19,12 +19,12 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Sistem Informasi Praktek Kerja</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="POST" action="/dosen/login/actionLogin">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="NIDN">
+                                            <input type="text" name="nidn" class="form-control form-control-user" required placeholder="NIDN">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="pass" class="form-control form-control-user" required placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -33,11 +33,9 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="<?= route_to('dosen/dosbim/dashboard') ?>" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
-                                        <hr>
-
+                                        </button>
                                     </form>
 
 

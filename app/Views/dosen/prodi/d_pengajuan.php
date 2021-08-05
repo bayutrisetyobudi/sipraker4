@@ -16,7 +16,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th class="text-center">No</th>
                             <th>Tanggal Pengajuan</th>
                             <th>NIM</th>
                             <th>Nama</th>
@@ -26,30 +26,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2011/04/25</td>
-                            <td>2018420133</td>
-                            <td>Dendy Zulfikar</td>
-                            <td>PT. CAHAYA ILAHI</td>
-                            <td>Sistem Abal - Abal</td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-warning btn-sm" title="Cek Selengkapnya"><i class="fa fa-eye"></i> Lihat</a>
-                                <a href="" class="btn btn-success btn-sm" title="Validasi"><i class="fa fa-check"></i> Validasi</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2011/05/12</td>
-                            <td>2018420047</td>
-                            <td>Bayu Tri Setyo Budi</td>
-                            <td>PT. CAHAYA ILAHI</td>
-                            <td>Sistem Informasi Kenduren</td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-warning btn-sm" title="Cek Selengkapnya"><i class="fa fa-eye"></i> Lihat</a>
-                                <a href="" class="btn btn-success btn-sm" title="Validasi"><i class="fa fa-check"></i> Validasi</a>
-                            </td>
-                        </tr>
+                        <?php
+                        $i = 1;
+                        foreach ($data_pengajuan as $row) : ?>
+                            <tr>
+                                <td class="text-center"><?=$i++?></td>
+                                <td><?=$row['tgl_pengajuan']?></td>
+                                <td><?=$row['nim']?></td>
+                                <td><?=$row['nama_mahasiswa']?></td>
+                                <td><?=$row['nama_instansi']?></td>
+                                <td><?=$row['judul_praker']?></td>
+                                <td class="text-center">
+                                    <form action="/dosen/dashboard/actionUpdateAcc" method="post">
+                                        <input type="hidden" name="id_praker" value="<?=$row['id_praker']?>">
+                                        <button type="submit" name="tolak" class="btn btn-danger btn-sm" ><i class="fa fa-times mr-2"></i> Tolak</button>
+                                        <button type="submit" name="validasi" class="btn btn-success btn-sm"><i class="fa fa-check mr-2"></i> Validasi</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

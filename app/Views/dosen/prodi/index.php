@@ -19,7 +19,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Jumlah Mahasiswa</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">86</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$mhs?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -37,7 +37,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Jumlah Dosen</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">31</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$dosen?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
@@ -55,7 +55,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Pengajuan
                             </div>
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">35</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?=$pengajuan?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -73,7 +73,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Jumlah Tervalidasi</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$tervalidasi?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-check fa-2x text-gray-300"></i>
