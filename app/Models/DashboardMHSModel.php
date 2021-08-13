@@ -46,14 +46,15 @@ class DashboardMHSModel extends Model {
         return $this->praker->getWhere(['acc'=>'Tervalidasi','nim'=>$_SESSION['data_mahasiswa']['nim']])->getFirstRow();
     }
 
-    public function addBimbingan($judul){
+    public function addBimbingan($judul,$file_bimbingan){
         $id = $this->getKPTerAcc()->id_praker;
         if($id){
             $this->bimbingan->insert([
                 'tgl_bimbingan'=>Time::now(),
                 'judul_bimbingan'=>$judul,
                 'status_bimbingan'=> 'Menunggu',
-                'id_praker'=> $id
+                'id_praker'=> $id,
+                'up_bimbingan'=>$file_bimbingan
             ]);
         }
     }

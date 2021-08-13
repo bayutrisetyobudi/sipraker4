@@ -37,7 +37,7 @@
                                 $class_btn = "success";
                                 break;
                             case "Revisi":
-                                $class_btn = "warning";
+                                $class_btn = "danger";
                                 break;
                         }
                         ?>
@@ -49,11 +49,10 @@
                             <td class="align-middle"><?=$row['judul_praker']?></td>
                             <td class="align-middle"><?=$row['judul_bimbingan']?></td>
                             <td class="text-center">
-                                <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>
-                                <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
+                                <a href="<?=base_url('bimbingan/'.$row['up_bimbingan'])?>" download="<?= $row['judul_bimbingan'] ?>" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download mr-2" aria-hidden="true"></i> Unduh</a>
                             </td>
                             <td class="text-center">
-                                <a href="" class="btn btn-<?=$class_btn?> btn-sm"><i class="fa fa-exit" aria-hidden="true"></i> <?=$row['status_bimbingan']?></a>
+                                <button class="btn btn-<?=$class_btn?> btn-sm"><i class="fa fa-exit" aria-hidden="true"></i> <?=$row['status_bimbingan']?></button>
                             </td>
                         </tr>
                         <?php endforeach;?>

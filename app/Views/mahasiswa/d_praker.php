@@ -51,18 +51,40 @@
                                     <td class="text-center align-middle"><?= $row['dosbim'] ? $row['nama_dosen'] : '<span class="badge badge-danger">Belum dapat</span>' ?></th>
 
                                     <td class="text-center align-middle">
-                                        <a class="btn btn-<?= $btn_class ?> btn-md">
-                                            <?php if ($row['acc'] == 'Ditolak') : ?>
+                                        <?php if ($row['acc'] == 'Ditolak') : ?>
+                                            <button  onclick="$('#message').html('<?= $row['keterangan'] ?>');$('#pengajuanDitolak').modal()" class="btn btn-<?= $btn_class ?> btn-md">
                                                 <i class="fas fa-eye mr-2"></i>
-                                            <?php endif; ?>
-                                            <?= $row['acc'] ?>
-                                        </a>
+                                                <?= $row['acc'] ?>
+                                            </button>
+                                        <?php else : ?>
+                                            <button class="btn btn-<?= $btn_class ?> btn-md">
+                                                <?= $row['acc'] ?>
+                                            </button>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?= $this->endSection() ?>
+<?= $this->section('modal') ?>
+<!-- Modal -->
+<div class="modal fade" id="pengajuanDitolak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alasan Ditolak</h5>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
             </div>
         </div>
     </div>

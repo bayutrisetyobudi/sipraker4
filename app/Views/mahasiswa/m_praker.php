@@ -6,6 +6,16 @@
 <div class="container mt-3">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Daftar Pengajuan Kerja Praktek</h1>
+    <?php if(session()->has('success')):?>
+    <div class="alert alert-success" role="alert">
+        Berhasil mengajukan Kerja Praktek !
+    </div>
+    <?php endif;?>
+    <?php if($acc_kp):?>
+    <div class="alert alert-danger" role="alert">
+        Pengajuan Kerja Praktek anda sudah di ACC !
+    </div>
+    <?php endif;?>
     <div class="row">
         <div class="col">
             <div class="card shadow">
@@ -34,7 +44,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-md btn-primary">Daftar</button>
+                            <button type="submit" <?=$acc_kp?'disabled style="cursor:not-allowed"':''?> class="btn btn-md btn-primary">Daftar</button>
                         </div>
 
                     </form>

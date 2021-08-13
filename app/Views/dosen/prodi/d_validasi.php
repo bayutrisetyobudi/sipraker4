@@ -23,7 +23,6 @@
                             <th>Instansi / Perusahaan</th>
                             <th>Judul Penelitian / Kerja Praktek</th>
                             <th>Status</th>
-                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,10 +38,6 @@
                                 <td><?=$row['nama_instansi']?></td>
                                 <td><?=$row['judul_praker']?></td>
                             <td class="text-center"><span class="badge badge-success"><?=$row['acc']?></span></td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-warning btn-sm" title="Cek Selengkapnya"><i class="fa fa-eye mr-2"></i> Lihat</a>
-
-                            </td>
                         </tr>
                         <?php endforeach;?>
                     </tbody>

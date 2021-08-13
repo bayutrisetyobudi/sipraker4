@@ -44,8 +44,9 @@ class DashboardDosenModel extends Model{
         return $this->praker->join('mahasiswa','mahasiswa.nim = praker.nim')->getWhere(['acc'=>$status])->getResultArray();
     }
 
-    public function setPengajuanKP($id,$status){
+    public function setPengajuanKP($id,$status,$keterangan=null){
         $this->praker->set('acc',$status);
+        $this->praker->set('keterangan',$keterangan);
         $this->praker->where('id_praker',$id);
         $this->praker->update();
     }
@@ -72,8 +73,13 @@ class DashboardDosenModel extends Model{
             'status_bimbingan !='=>'Menunggu'
             ])->getResultArray();
     }
-    public function setBimbingan($id_bimbingan){
-        $this->bimbingan->set('status_bimbingan','Lanjut');
+    public function setBimbingan($id_bimbingan,$file_revisi=null){
+        if(!$file_revisi){
+            $this->bimbingan->set('status_bimbingan','Lanjut');
+        }else{
+            $this->bimbingan->set('status_bimbingan','Revisi');
+            $this->bimbingan->set('up_revisi',$file_revisi);
+        }
         $this->bimbingan->where('id_bimbingan',$id_bimbingan);
         $this->bimbingan->update();
     }

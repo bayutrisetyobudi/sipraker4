@@ -22,8 +22,8 @@ class Dashboard extends BaseController
 			$bimbingan = $this->dashboard->getJumlahBimbingan();
 			$data = [
 				'title' => 'Dashboard',
-				'mhs'=>$mhs,
-				'bimbingan'=>$bimbingan
+				'mhs' => $mhs,
+				'bimbingan' => $bimbingan
 			];
 			return view('dosen/dosbim/index', $data);
 		}
@@ -36,7 +36,7 @@ class Dashboard extends BaseController
 			$mhs = $this->dashboard->getMahasiswaDibimbing($_SESSION['data_dosen']['nidn']);
 			$data = [
 				'title' => 'Data Mahasiswa',
-				'data_mhs'=>$mhs
+				'data_mhs' => $mhs
 			];
 			return view('dosen/dosbim/d_mhsbim', $data);
 		}
@@ -49,7 +49,8 @@ class Dashboard extends BaseController
 			$data_bimbingan = $this->dashboard->getBimbingan($_SESSION['data_dosen']['nidn']);
 			$data = [
 				'title' => 'Data Bimbingan',
-				'data_bimbingan'=>$data_bimbingan
+				'data_bimbingan' => $data_bimbingan,
+				'validation' => \Config\Services::validation(),
 			];
 			return view('dosen/dosbim/d_bim', $data);
 		}
@@ -62,16 +63,40 @@ class Dashboard extends BaseController
 			$data_bimbingan = $this->dashboard->getBimbinganTervalidasi($_SESSION['data_dosen']['nidn']);
 			$data = [
 				'title' => 'Bimbingan Tervalidasi',
-				'data_bimbingan' =>$data_bimbingan
+				'data_bimbingan' => $data_bimbingan
 			];
 			return view('dosen/dosbim/d_valbim', $data);
 		}
 		return redirect()->to('/dosen/login');
 	}
 
-	public function actionSetBimbingan(){
+	public function actionSetBimbingan()
+	{
 		$id = $this->request->getVar('id_bimbingan');
+		if ($this->request->getVar('btn_revisi')!==null) {
+			if (!$this->validate([
+				'revisi' => [
+					'rules' => 'uploaded[revisi]|max_size[revisi,2048]|mime_in[revisi,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document]|ext_in[revisi,doc,docx]',
+					'errors' => [
+						'uploaded' => 'Harus upload file revisi',
+						'max_size' => 'File harus kurang dari 2MB',
+						'mime_in' => 'File harus bertipe doc / docx',
+						'ext_in' => 'File harus bertipe doc / docx',
+					]
+				]
+			])) {
+				return redirect()->to('/dosen/dosbim/dashboard/bimbingan')->withInput();
+			}
+			$file = $this->request->getFile('revisi');
+			$fileName = $file->getRandomName();
+			$file->move('revisi', $fileName);
+			$this->dashboard->setBimbingan($id, $fileName);
+			session()->setFlashdata('success', 'Berhasil mengupload revisi bimbingan');
+			return redirect()->to('/dosen/dosbim/dashboard/bimbingan');
+		}
+
 		$this->dashboard->setBimbingan($id);
+		session()->setFlashdata('success', 'Berhasil mengganti status bimbingan menjadi lanjut');
 		return redirect()->to('/dosen/dosbim/dashboard/bimbingan');
 	}
 
@@ -157,17 +182,21 @@ class Dashboard extends BaseController
 		$validasi = $this->request->getVar('validasi');
 		$id = $this->request->getVar('id_praker');
 		if (isset($tolak)) {
+			$keterangan = $this->request->getVar('alasan');
 			$this->dashboard->setPengajuanKP(
 				$id,
-				'Ditolak'
+				'Ditolak',
+				$keterangan
 			);
+			session()->setFlashdata('success','Berhasil menolak pengajuan Kerja Praktek');
 		}
 		if (isset($validasi)) {
 			$this->dashboard->setPengajuanKP(
 				$id,
 				'Tervalidasi'
 			);
+			session()->setFlashdata('success','Berhasil memvalidasi pengajuan Kerja Praktek');
 		}
-		return redirect()->to('/dosen/kaprodi/dashboard/pengajuan');
+		return redirect()->to('/dosen/kaprodi/dashboard/pengajuan')->withInput();
 	}
 }

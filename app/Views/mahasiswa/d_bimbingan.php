@@ -1,8 +1,8 @@
-<?=$this->extend('layout/dashboard')?>
-<?=$this->section('sidebar')?>
-<?=$this->include('mahasiswa/nav')?>
-<?=$this->endSection()?>
-<?=$this->section('content')?>
+<?= $this->extend('layout/dashboard') ?>
+<?= $this->section('sidebar') ?>
+<?= $this->include('mahasiswa/nav') ?>
+<?= $this->endSection() ?>
+<?= $this->section('content') ?>
 <!-- Content Row -->
 <div class="container-fluid">
 
@@ -25,53 +25,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
+                        <?php
                         $i = 1;
-                        foreach($data_bimbingan as $row):
-                        $badge_class="";
-                        switch($row['status_bimbingan']){
-                            case "Menunggu":
-                                $badge_class = "warning";
-                                break;
-                            case "Revisi":
-                                $badge_class = "danger";
-                                break;
-                            case "Lanjut":
-                                $badge_class = "success";
-                                break;
-                        }
+                        foreach ($data_bimbingan as $row) :
+                            $badge_class = "";
+                            switch ($row['status_bimbingan']) {
+                                case "Menunggu":
+                                    $badge_class = "warning";
+                                    break;
+                                case "Revisi":
+                                    $badge_class = "danger";
+                                    break;
+                                case "Lanjut":
+                                    $badge_class = "success";
+                                    break;
+                            }
                         ?>
-                        <tr>
-                            <td class="align-middle text-center"><?=$i++?></td>
-                            <td class="align-middle"><?=$row['tgl_bimbingan']?></td>
-                            <td class="align-middle"><?=$row['judul_bimbingan']?></td>
-                            <td class="align-middle text-center">
-                                <span class="badge badge-<?=$badge_class?>"><?=$row['status_bimbingan']?></span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>
-                                <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
-                            </td>
-                        </tr>
-                        <?php endforeach;?>
-                        <!-- <tr>
-                            <td>2</td>
-                            <td>2011/07/25</td>
-                            <td>Bab 1 (Sistem Kenduren)</td>
-                            <td class="text-center"><span class="badge badge-success">Lanjut</span></td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-warning btn-md" title="Baca Selengkapnya"><i class="fa fa-book"></i> Buka</a>
-                                <a href="" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download" aria-hidden="true"></i> Unduh</a>
-
-                            </td>
-                        </tr> -->
-
+                            <tr>
+                                <td class="align-middle text-center"><?= $i++ ?></td>
+                                <td class="align-middle"><?= $row['tgl_bimbingan'] ?></td>
+                                <td class="align-middle"><?= $row['judul_bimbingan'] ?></td>
+                                <td class="align-middle text-center">
+                                    <span class="badge badge-<?= $badge_class ?>"><?= $row['status_bimbingan'] ?></span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <a href="<?=base_url('bimbingan/'.$row['up_bimbingan'])?>" download="<?= $row['judul_bimbingan'] ?>" class="btn btn-primary btn-md" title="Unduh Sekarang"><i class="fa fa-download mr-2" aria-hidden="true"></i> Unduh</a>
+                                    <?php if ($row['status_bimbingan'] == 'Revisi') : ?>
+                                        <a href="<?=base_url('revisi/'.$row['up_revisi'])?>" download="revisi_<?= $row['judul_bimbingan'] ?>" class="btn btn-danger btn-md" title="Unduh Sekarang"><i class="fa fa-download mr-2" aria-hidden="true"></i> Unduh Revisi</a>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
-</div>
-<!-- /.container-fluid -->
-<?=$this->endSection()?>
+<?= $this->endSection() ?>
