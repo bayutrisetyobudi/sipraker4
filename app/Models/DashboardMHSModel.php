@@ -42,6 +42,10 @@ class DashboardMHSModel extends Model {
         return $this->praker->getWhere(['nim'=>$_SESSION['data_mahasiswa']['nim']])->getResultArray();
     }
 
+    public function deleteKerjaPraktek($id_praker){
+        $this->praker->delete(['id_praker'=>$id_praker]);
+    }
+
     public function getKPTerAcc(){
         return $this->praker->getWhere(['acc'=>'Tervalidasi','nim'=>$_SESSION['data_mahasiswa']['nim']])->getFirstRow();
     }
@@ -65,6 +69,14 @@ class DashboardMHSModel extends Model {
             return $this->bimbingan->getWhere(['id_praker'=>$id])->getResultArray();
         }
         return array();
+    }
+
+    public function getBimbinganById($id_bimbingan){
+        return $this->bimbingan->getWhere(['id_bimbingan'=>$id_bimbingan])->getFirstRow();
+    }
+
+    public function deleteBimbingan($id_bimbingan){
+        $this->bimbingan->delete(['id_bimbingan'=>$id_bimbingan]);
     }
 
 }

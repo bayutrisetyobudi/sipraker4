@@ -127,4 +127,22 @@ class Dashboard extends BaseController
 		session()->setFlashdata('success','');
 		return redirect()->to('mahasiswa/dashboard/daftar_bimbingan/')->withInput();
 	}
+	
+	public function actionDeletePengajuan(){
+		$id_kp = $this->request->getVar('id_pengajuan');
+		$this->dashboard->deleteKerjaPraktek($id_kp);
+		session()->setFlashdata('success','');
+		return redirect()->to('mahasiswa/dashboard/validasi/')->withInput();
+	}
+	
+	public function actionDeleteBimbingan(){
+		$id_bimbingan = $this->request->getVar('id_bimbingan');
+		
+		$fileName = $this->dashboard->getBimbinganById($id_bimbingan)->up_bimbingan;
+		unlink('bimbingan/'.$fileName);
+
+		$this->dashboard->deleteBimbingan($id_bimbingan);
+		session()->setFlashdata('success','');
+		return redirect()->to('mahasiswa/dashboard/bimbingan/')->withInput();
+	}
 }

@@ -10,7 +10,11 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Data Pengajuan Kerja Praktek Anda</h1>
-
+        <?php if (session()->has('success')) : ?>
+            <div class="alert alert-success" role="alert">
+                Berhasil menghapus pengajuan Kerja Praktek !
+            </div>
+        <?php endif; ?>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
@@ -52,13 +56,18 @@
 
                                     <td class="text-center align-middle">
                                         <?php if ($row['acc'] == 'Ditolak') : ?>
-                                            <button  onclick="$('#message').html('<?= $row['keterangan'] ?>');$('#pengajuanDitolak').modal()" class="btn btn-<?= $btn_class ?> btn-md">
+                                            <button onclick="$('#message').html('<?= $row['keterangan'] ?>');$('#pengajuanDitolak').modal()" class="btn btn-<?= $btn_class ?> btn-md">
                                                 <i class="fas fa-eye mr-2"></i>
                                                 <?= $row['acc'] ?>
                                             </button>
                                         <?php else : ?>
                                             <button class="btn btn-<?= $btn_class ?> btn-md">
                                                 <?= $row['acc'] ?>
+                                            </button>
+                                        <?php endif; ?>
+                                        <?php if ($row['acc'] == 'Menunggu') : ?>
+                                            <button onclick="$('#id_pengajuan').val('<?= $row['id_praker'] ?>');$('#hapusPengajuan').modal({backdrop:'static'})" class="btn btn-danger btn-md">
+                                                <i class="fas fa-trash"></i>
                                             </button>
                                         <?php endif; ?>
                                     </td>
@@ -85,6 +94,26 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="hapusPengajuan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hapus Pengajuan</h5>
+            </div>
+            <div class="modal-body">
+                <p>Apa anda yakin ingin menghapus pengajuan ini ?</p>
+            </div>
+            <div class="modal-footer">
+                <form action="/mahasiswa/dashboard/actionDeletePengajuan" method="post">
+                    <input type="hidden" name="id_pengajuan" id="id_pengajuan">
+                    <button type="submit" class="btn btn-primary">OK</button>
+                </form>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>

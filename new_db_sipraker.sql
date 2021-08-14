@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2021 at 03:25 PM
+-- Generation Time: Aug 14, 2021 at 06:29 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -42,9 +42,10 @@ CREATE TABLE `bimbingan` (
 --
 
 INSERT INTO `bimbingan` (`id_bimbingan`, `tgl_bimbingan`, `judul_bimbingan`, `up_bimbingan`, `up_revisi`, `status_bimbingan`, `id_praker`) VALUES
-(5, '2021-08-04', 'coba bimbingan', '', '', 'Menunggu', 3),
-(6, '2021-08-04', 'Bimbingan Revisi', '', '', 'Revisi', 3),
-(7, '2021-08-04', 'Bimbingan lanjut', '', '', 'Lanjut', 3);
+(5, '2021-08-04', 'coba bimbingan', 'Coba.doc', '', 'Menunggu', 3),
+(6, '2021-08-04', 'Bimbingan Revisi', 'Coba.doc', '1628833560_4190b17e240a86c1ffed.docx', 'Revisi', 3),
+(7, '2021-08-04', 'Bimbingan lanjut', 'Coba.doc', '', 'Lanjut', 3),
+(8, '2021-08-12', 'test_IV', '1628779556_3a26ae713e5e2d27f9f3.docx', '', 'Menunggu', 3);
 
 -- --------------------------------------------------------
 
@@ -180,7 +181,7 @@ ALTER TABLE `praker`
 -- AUTO_INCREMENT for table `bimbingan`
 --
 ALTER TABLE `bimbingan`
-  MODIFY `id_bimbingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_bimbingan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `jabatan`
@@ -192,7 +193,7 @@ ALTER TABLE `jabatan`
 -- AUTO_INCREMENT for table `praker`
 --
 ALTER TABLE `praker`
-  MODIFY `id_praker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_praker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
